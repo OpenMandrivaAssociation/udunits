@@ -13,7 +13,6 @@ URL: http://my.unidata.ucar.edu/content/software/udunits/index.html
 Source0: udunits-1.12.4.tar.bz2
 Patch0: udunits-1.12.4-linuxfixes.patch
 Patch1: udunits-1.12.4-64bit.patch
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires: gcc-gfortran, gcc-c++, groff
 BuildRequires: perl-devel
 
