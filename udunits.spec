@@ -1,5 +1,5 @@
 %define version 1.12.4
-%define release %mkrel 3
+%define release %mkrel 5
 
 Name: udunits
 Version: %version
