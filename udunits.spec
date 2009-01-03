@@ -16,6 +16,7 @@ Patch1: udunits-1.12.4-64bit.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires: gcc-gfortran, gcc-c++, groff
 BuildRequires: perl-devel
+BuildRequires: bison
 
 %description
 The Unidata units utility, udunits, supports conversion of unit specifications 
