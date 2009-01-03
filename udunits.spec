@@ -1,5 +1,7 @@
-%define version 1.12.4
-%define release %mkrel 6
+%define version 1.12.9
+%define release %mkrel 1
+
+%define _default_patch_fuzz 2
 
 Name: udunits
 Version: %version
@@ -10,7 +12,7 @@ Group: Sciences/Mathematics
 URL: http://my.unidata.ucar.edu/content/software/udunits/index.html
 # Upstream actually packages it as a .tar.Z, I repackaged to prevent ncompress 
 # as a dependency.
-Source0: udunits-1.12.4.tar.bz2
+Source0: ftp://ftp.unidata.ucar.edu/pub/udunits/udunits-%{version}.tar.gz
 Patch0: udunits-1.12.4-linuxfixes.patch
 Patch1: udunits-1.12.4-64bit.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
