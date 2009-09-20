@@ -1,5 +1,5 @@
 %define version 1.12.9
-%define release %mkrel 1
+%define release %mkrel 2
 
 %define _default_patch_fuzz 1
 
