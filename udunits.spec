@@ -96,7 +96,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %doc src/{COPYRIGHT,README,RELEASE_NOTES,VERSION}
 %{_bindir}/udunits
-%{_mandir}/man1/udunits*
+%{_mandir}/man1/udunits.1*
 %config(noreplace) %{_sysconfdir}/udunits.dat
 
 %files devel
@@ -105,11 +105,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/udunits.inc
 %{_libdir}/libudport.a
 %{_libdir}/libudunits.a
-%{_mandir}/man3*/udunits*
+%{_mandir}/man3*/udunits.3*
 
 
 %files -n perl-udunits
 %defattr(-,root,root)
 %{perl_vendorarch}/*
-%{_mandir}/man1/udunitsperl*
+%{_mandir}/man1/udunitsperl.1*
 
