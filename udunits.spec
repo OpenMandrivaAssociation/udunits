@@ -1,22 +1,18 @@
-%define version 1.12.9
-%define release %mkrel 4
-
 %define _default_patch_fuzz 1
 
-Name: udunits
-Version: %version
-Release: %release
-Summary: A library for manipulating units of physical quantities
-License: Freely distributable (BSD-like)
-Group: Sciences/Mathematics
-URL: http://my.unidata.ucar.edu/content/software/udunits/index.html
-Source0: ftp://ftp.unidata.ucar.edu/pub/udunits/udunits-%{version}.tar.gz
-Patch0: udunits-1.12.4-linuxfixes.patch
-Patch1: udunits-1.12.4-64bit.patch
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
-BuildRequires: gcc-gfortran, gcc-c++, groff
-BuildRequires: perl-devel
-BuildRequires: bison
+Name:		udunits
+Version:	1.12.9
+Release:	4
+Summary:	A library for manipulating units of physical quantities
+License:	Freely distributable (BSD-like)
+Group:		Sciences/Mathematics
+URL:		http://my.unidata.ucar.edu/content/software/udunits/index.html
+Source0:	ftp://ftp.unidata.ucar.edu/pub/udunits/udunits-%{version}.tar.gz
+Patch0:		udunits-1.12.4-linuxfixes.patch
+Patch1:		udunits-1.12.4-64bit.patch
+BuildRequires:	gcc-gfortran, gcc-c++, groff
+BuildRequires:	perl-devel
+BuildRequires:	bison
 
 %description
 The Unidata units utility, udunits, supports conversion of unit specifications 
@@ -37,21 +33,21 @@ conversion between them. In the other mode, only an input unit specification is
 given. This causes the utility to print the definition -- in standard units -- 
 of the input unit.
 
-%package devel
-Group: Development/Other
-Summary: Headers and libraries for udunits
-Requires: %{name} = %{version}-%{release}
+%package	devel
+Group:		Development/Other
+Summary:	Headers and libraries for udunits
+Requires:	%{name} = %{version}-%{release}
 
-%description devel
+%description	devel
 This package contains the files needed for compiling programs using
 the udunits library.
 
-%package -n perl-udunits
-Summary: Perl module for udunits
-Group: Development/Perl
-Requires: %{name}
+%package -n	perl-udunits
+Summary:	Perl module for udunits
+Group:		Development/Perl
+Requires:	%{name}
 
-%description -n perl-udunits
+%description -n	perl-udunits
 A perl module for udunits.
 
 %prep
@@ -76,7 +72,6 @@ export LD_MATH=-lm
 make all 
 
 %install
-rm -rf $RPM_BUILD_ROOT
 cd src/
 sed "s?/usr?${RPM_BUILD_ROOT}/usr?" Makefile > Makefile.install
 make PREFIX=${RPM_BUILD_ROOT}/%{_prefix} datadir=${RPM_BUILD_ROOT}/%{sysconfdir} \
@@ -89,18 +84,13 @@ rm -rf ${RPM_BUILD_ROOT}/usr/share/man3f
 # Nuke perm
 find %{buildroot}%{perl_vendorlib} -type d -exec chmod 755 {} \;
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %files
-%defattr(-,root,root)
 %doc src/{COPYRIGHT,README,RELEASE_NOTES,VERSION}
 %{_bindir}/udunits
 %{_mandir}/man1/udunits.1*
 %config(noreplace) %{_sysconfdir}/udunits.dat
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/udunits.h
 %{_includedir}/udunits.inc
 %{_libdir}/libudport.a
@@ -109,7 +99,5 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %files -n perl-udunits
-%defattr(-,root,root)
 %{perl_vendorarch}/*
 %{_mandir}/man1/udunitsperl.1*
-
