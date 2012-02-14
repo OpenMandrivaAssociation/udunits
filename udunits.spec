@@ -1,5 +1,3 @@
-%define _default_patch_fuzz 1
-
 Name:		udunits
 Version:	1.12.9
 Release:	4
@@ -8,7 +6,7 @@ License:	Freely distributable (BSD-like)
 Group:		Sciences/Mathematics
 URL:		http://my.unidata.ucar.edu/content/software/udunits/index.html
 Source0:	ftp://ftp.unidata.ucar.edu/pub/udunits/udunits-%{version}.tar.gz
-Patch0:		udunits-1.12.4-linuxfixes.patch
+Patch0:		udunits-1.12.9-linuxfixes.patch
 Patch1:		udunits-1.12.4-64bit.patch
 BuildRequires:	gcc-gfortran, gcc-c++, groff
 BuildRequires:	perl-devel
@@ -52,7 +50,7 @@ A perl module for udunits.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch0 -p1 -b .linux~
 # Yes, this is a dirty hack.
 %ifarch x86_64 ppc64 sparc64
 %patch1 -p1
