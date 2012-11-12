@@ -1,0 +1,55 @@
+--- udunits-1.12.9/src/lib/Makefile.in.linux~	2008-07-22 19:05:50.000000000 +0200
++++ udunits-1.12.9/src/lib/Makefile.in	2012-02-15 00:45:34.230424721 +0100
+@@ -6,8 +6,8 @@
+ 
+ LIBRARY		= udunits
+ 
+-FLEX		= /usr/local/gnu/bin/flex
+-cpp_path	= -DUT_DEFAULT_PATH='"$(prefix)/etc/udunits.dat"'
++FLEX		= /usr/bin/flex
++cpp_path	= -DUT_DEFAULT_PATH='"/etc/udunits.dat"'
+ CPPFLAGS	= -I../port/misc -I../port/cfortran $(cpp_path) @CPPFLAGS@
+ CFLAGS		= @CFLAGS@
+ 
+--- udunits-1.12.9/src/Makefile.in.linux~	2003-08-29 20:27:07.000000000 +0200
++++ udunits-1.12.9/src/Makefile.in	2012-02-15 00:45:34.229424720 +0100
+@@ -68,7 +68,7 @@ $(MANUALS) dummy:
+ @PERL_DISTCLEAN@ dummy:	perl/Makefile
+ 
+ perl/Makefile:		perl/Makefile.PL
+-	-cd perl && $(PERL) Makefile.PL
++	-cd perl && $(PERL) Makefile.PL PREFIX=$(RPM_BUILD_ROOT)/usr INSTALLDIRS=vendor
+ 
+ install:	whatis
+ 
+--- udunits-1.12.9/src/port/cfortran/cfortran.h.linux~	2008-07-22 18:47:24.000000000 +0200
++++ udunits-1.12.9/src/port/cfortran/cfortran.h	2012-02-15 00:45:34.229424720 +0100
+@@ -84,7 +84,7 @@ only C calling FORTRAN subroutines will
+ #if !(defined(NAGf90Fortran)||defined(f2cFortran)||defined(hpuxFortran)||defined(apolloFortran)||defined(sunFortran)||defined(IBMR2Fortran)||defined(CRAYFortran))
+ #if !(defined(mipsFortran)||defined(DECFortran)||defined(vmsFortran)||defined(CONVEXFortran)||defined(PowerStationFortran)||defined(AbsoftUNIXFortran)||defined(AbsoftProFortran)||defined(SXFortran))
+ /* If no Fortran compiler is given, we choose one for the machines we know.   */
+-#if defined(lynx) || defined(VAXUltrix)
++#if defined(lynx) || defined(VAXUltrix) || defined(__linux__)
+ #define f2cFortran    /* Lynx:      Only support f2c at the moment.
+                          VAXUltrix: f77 behaves like f2c.
+                            Support f2c or f77 with gcc, vcc with f2c. 
+--- udunits-1.12.9/src/port/master.mk.in.linux~	2008-07-22 19:06:02.000000000 +0200
++++ udunits-1.12.9/src/port/master.mk.in	2012-02-15 00:45:34.230424721 +0100
+@@ -351,7 +351,7 @@ dummy_incdir $(INCDIR):
+ ############################################################################
+ # `etc/' files:
+ ############################################################################
+-ETCDIR	= $(prefix)/etc
++ETCDIR	= $(RPM_BUILD_ROOT)/etc
+ ETCFILE	= dummy-etcfile		# to silence GNU make(1)
+ 
+ installed_etcfiles:
+@@ -382,7 +382,7 @@ dummy_etcdir $(ETCDIR):
+ ############################################################################
+ # Manual Pages:
+ ############################################################################
+-MANDIR		= $(prefix)/man
++MANDIR		= $(prefix)/share/man
+ MANUAL		= dummy-manual	# to slience GNU make
+ WHATIS		= @WHATIS@
+ # The following macro should be empty on systems that don't

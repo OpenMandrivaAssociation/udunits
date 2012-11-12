@@ -1,0 +1,11 @@
+--- udunits-1.12.4/src/port/master.mk.in.BAD	2005-04-16 17:44:46.000000000 -0500
++++ udunits-1.12.4/src/port/master.mk.in	2005-04-16 17:47:04.000000000 -0500
+@@ -144,7 +144,7 @@
+ # Libraries:
+ ############################################################################
+ RANLIB		= @RANLIB@
+-LIBDIR		= $(exec_prefix)/lib
++LIBDIR		= $(exec_prefix)/lib64
+ LIB_A		= lib$(LIBRARY).a
+ LIBFILE		= dummy-libfile		# to silence GNU make(1)
+ 
