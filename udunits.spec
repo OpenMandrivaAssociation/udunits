@@ -1,6 +1,6 @@
 Name:		udunits
 Version:	1.12.9
-Release:	4
+Release:	5
 Summary:	A library for manipulating units of physical quantities
 License:	Freely distributable (BSD-like)
 Group:		Sciences/Mathematics
