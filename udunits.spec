@@ -4,7 +4,7 @@ Release:	5
 Summary:	A library for manipulating units of physical quantities
 License:	Freely distributable (BSD-like)
 Group:		Sciences/Mathematics
-URL:		http://my.unidata.ucar.edu/content/software/udunits/index.html
+URL:		https://my.unidata.ucar.edu/content/software/udunits/index.html
 Source0:	ftp://ftp.unidata.ucar.edu/pub/udunits/udunits-%{version}.tar.gz
 Patch0:		udunits-1.12.9-linuxfixes.patch
 Patch1:		udunits-1.12.4-64bit.patch
