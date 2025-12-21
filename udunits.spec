@@ -8,6 +8,11 @@ URL:		https://my.unidata.ucar.edu/content/software/udunits/index.html
 Source0:	ftp://ftp.unidata.ucar.edu/pub/udunits/udunits-%{version}.tar.gz
 Patch0:		udunits-1.12.9-linuxfixes.patch
 Patch1:		udunits-1.12.4-64bit.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	gcc-gfortran, gcc-c++, groff
 BuildRequires:	perl-devel
 BuildRequires:	bison
